@@ -6,7 +6,7 @@ fn main() {
     let result: Vec<Vec<&str>> = lines.chunks(3).map(|chunk| chunk.to_vec()).collect();
 
     // [[0, 6, 3], [0, 3, 0]]
-    let result: Vec<Vec<i32>> = result.iter().map(replace_text).collect();
+    let result: Vec<Vec<i32>> = result.iter().map(part2_replace_text).collect();
 
     // [9, 3, 0]
     let result: Vec<i32> = result
@@ -15,26 +15,43 @@ fn main() {
         .collect();
 
     println!("result: {:?}", result);
-    part1(result);
+    get_result(result);
 }
 
-fn part1(vec: Vec<i32>) {
+fn get_result(vec: Vec<i32>) {
     let sum = vec.iter().fold(0, |acc, &x| acc + x);
     println!("sum: {:?}", sum);
 }
 
-fn replace_text(text: &Vec<&str>) -> Vec<i32> {
+// fn part1_replace_text(text: &Vec<&str>) -> Vec<i32> {
+//     text.iter()
+//         .map(|v| match v {
+//             &"B Z" => 9,
+//             &"A Y" => 8,
+//             &"C X" => 7,
+//             &"C Z" => 6,
+//             &"B Y" => 5,
+//             &"A X" => 4,
+//             &"A Z" => 3,
+//             &"C Y" => 2,
+//             &"B X" => 1,
+//             &_ => 0,
+//         })
+//         .collect()
+// }
+
+fn part2_replace_text(text: &Vec<&str>) -> Vec<i32> {
     text.iter()
         .map(|v| match v {
-            &"B Z" => 9,
-            &"A Y" => 8,
-            &"C X" => 7,
-            &"C Z" => 6,
-            &"B Y" => 5,
-            &"A X" => 4,
-            &"A Z" => 3,
-            &"C Y" => 2,
             &"B X" => 1,
+            &"C X" => 2,
+            &"A X" => 3,
+            &"A Y" => 4,
+            &"B Y" => 5,
+            &"C Y" => 6,
+            &"C Z" => 7,
+            &"A Z" => 8,
+            &"B Z" => 9,
             &_ => 0,
         })
         .collect()
