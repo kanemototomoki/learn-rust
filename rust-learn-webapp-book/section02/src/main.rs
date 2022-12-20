@@ -1,6 +1,8 @@
 use std::{collections::HashMap, fmt::{Display, self}};
 mod fraction;
 mod rectangle;
+mod error_sample;
+mod serde_sample;
 
 fn main() {
     println!("Hello, world!");
@@ -54,5 +56,8 @@ fn main() {
 
     fraction::run();
     rectangle::run();
+    let result = error_sample::run();
+    println!("result: {:?}", result);
 
+    serde_sample::run();
 }
